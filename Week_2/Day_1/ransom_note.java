@@ -1,0 +1,24 @@
+package Day_1;
+import java.util.*;
+public class ransom_note {
+
+        public boolean canConstruct(String ransomNote, String magazine) {
+            Map<Character, Integer> mp = new HashMap<>();
+            for(char ch : magazine.toCharArray()){
+                mp.put(ch, mp.getOrDefault(ch, 0) + 1);
+            }
+
+
+
+            for(char ch : ransomNote.toCharArray()){
+                if(!mp.containsKey(ch) || mp.get(ch) == 0){
+                    return false;
+                }
+                mp.put(ch, mp.get(ch) - 1); // decrease
+            }
+
+            return true;
+
+        }
+
+}
